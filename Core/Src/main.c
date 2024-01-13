@@ -162,10 +162,14 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_PIN)
 {	if (GPIO_PIN == GPIO_PIN_13) {
-    char message[] = "B";
-    HAL_USART_Transmit(&husart3, (uint8_t *)message, sizeof(message) - 1, 100);
-    HAL_Delay(200);
+	char message[] = "---";
+		HAL_USART_Transmit(&husart3, (uint8_t *)message, sizeof(message) - 1, 100);
+		HAL_Delay(200);
+		for (int i = 0; i<20; i++){
+			HAL_USART_Transmit(&husart3, (uint8_t *)"B", sizeof(message) - 1, 100);
+			HAL_Delay(200);
     }
+}
 else if(GPIO_PIN == GPIO_PIN_0){
 	char message[] = "---";
 	HAL_USART_Transmit(&husart3, (uint8_t *)message, sizeof(message) - 1, 100);
